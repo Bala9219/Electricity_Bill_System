@@ -11,7 +11,7 @@ public class database {
     Statement statement;
     database(){
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bill_system","root","MySQL@1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bill_system","root","MySQL");
             statement = connection.createStatement();
         }catch (Exception e){
             e.printStackTrace();
