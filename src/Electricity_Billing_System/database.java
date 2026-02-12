@@ -11,7 +11,15 @@ public class database {
     Statement statement;
     database(){
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bill_system","root","MySQL");
+            String DB_URL = System.getenv("DB_URL");
+            String DB_USER = System.getenv("DB_USER");
+            String DB_PASSWORD = System.getenv("DB_PASSWORD");
+
+            if (DB_URL == null || DB_USER == null || DB_PASSWORD == null) {
+                throw new RuntimeException("Environment variables not set!");
+            }
+
+            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             statement = connection.createStatement();
         }catch (Exception e){
             e.printStackTrace();
